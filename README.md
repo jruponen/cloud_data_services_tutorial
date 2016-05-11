@@ -4,7 +4,7 @@ These instructions and some files needed in the tutorials are provided at:  http
 ###Tutorial in short:  
 1: Setup Node-RED boilerplate  
 2: Collect ESC16 tweets and store into Cloudant  
-3: Examine Cloudant data and sync to dashDB
+3: Examine Cloudant data and sync to dashDB  
 4: Examine dashDB data and analyze with R
   
 For more IBM Cloud Data Services tutorials see:  
@@ -21,7 +21,8 @@ https://developer.ibm.com/clouddataservices/
 	- Meanwhile you may install the CF command line tool, if not done already  
 
 ##2. Set up a Node-RED flow to collect data
-	1. Copy the attached Node-RED flow on the clipboard (https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt) 
+	1. Copy the contents of the attached Node-RED flow on your clipboard:  
+	- https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt  
 	2. Open your Node-RED application (http://yourhostname.mybluemix.net/red)  
 	3. On an empty flow canvas, select Menu / Import / Clipboard  
 	4. Paste the text from clipboard and click OK  
@@ -68,9 +69,9 @@ https://developer.ibm.com/clouddataservices/
 	13. Enter directory name, e.g: ESC16  
 	14. Press "Create Project"  
 	15. Wait until RStudio refreshes and select "File" > "New File" > "R Script"  
-	16. Copy/paste the attached R Script on the empty canvas (https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/dashDB_ESC16_R.txt)  
+	16. Copy/paste the attached R Script contents on the empty canvas in RStudio:  
+	- https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/dashDB_ESC16_R.txt  
 	17. Press "Run" button to step through each line  
 	18. After run "barplot" line, check the "Plots" tab on the right  
 	19. Continue to "Run" rest of the lines in order to close the connection  
 	20. Select "File" > "Quit RStudio"  
-
