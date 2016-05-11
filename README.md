@@ -60,18 +60,19 @@ https://developer.ibm.com/clouddataservices/
 	5. Select "Run SQL" on the left  
 	6. To verify number of rows, clean up the SQL screen and enter (or copy) the following statement:  
 		SELECT COUNT(*) FROM ESC16_TWEETS;  
-	7. See the SQL select result on below  
-	8. To analyze the data, click on "Analytics" > "R Scripts"  
-	9. Click on the "RStudio" button  
-	10. You'll need to copy/paste dashDB username and password. These can be found from the previous browser tab (where dashDB is open). Go there and select "Connect" > "Connection Information". Copy/paste "User ID" and "Password" values to the RStudio tab.  
-	11. Click "File" > "New Project"  
-	12. Click "New Directory" > "Empty Project"  
-	13. Enter directory name, e.g: ESC16  
-	14. Press "Create Project"  
-	15. Wait until RStudio refreshes and select "File" > "New File" > "R Script"  
-	16. Copy/paste the attached R Script contents on the empty canvas in RStudio:  
+	7. Press "Run"
+	8. See the SQL select result on below  
+	9. To analyze the data, click on "Analytics" > "R Scripts"  
+	10. Click on the "RStudio" button  
+	11. You'll need to copy/paste dashDB username and password. These can be found from the previous browser tab (where dashDB is open). Go there and select "Connect" > "Connection Information". Copy/paste "User ID" and "Password" values to the RStudio tab.  
+	12. Click "File" > "New Project"  
+	13. Click "New Directory" > "Empty Project"  
+	14. Enter directory name, e.g: ESC16  
+	15. Press "Create Project"  
+	16. Wait until RStudio refreshes and select "File" > "New File" > "R Script"  
+	17. Copy/paste the attached R Script contents on the empty canvas in RStudio:  
 	- https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/dashDB_ESC16_R.txt  
-	17. Press "Run" button to step through each line  
-	18. After run "barplot" line, check the "Plots" tab on the right  
-	19. Continue to "Run" rest of the lines in order to close the connection  
-	20. Select "File" > "Quit RStudio"  
+	18. Press "Run" button to step through each line  
+	19. After run "barplot" line, check the "Plots" tab on the right  
+	20. Continue to "Run" rest of the lines in order to close the connection  
+	21. Select "File" > "Quit RStudio"  
