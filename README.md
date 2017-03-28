@@ -13,24 +13,25 @@ https://developer.ibm.com/clouddataservices/
 
 
 ## 1. Set up Node-RED boilerplate (if not done already)
-	1. Go to Bluemix catalog  
-	2. Select "Node-RED Starter" under "Boilerplate" category on the top  
-	3. Fill in your "appname" and "host" and press "Create"  
-	- You may use any host name as long as it is unique in the mybluemix.net domain  
-	4. Wait until your application is "Staged" and then click "Overview"  
-	- Meanwhile you may install the CF command line tool, if not done already  
+1. Go to Bluemix catalog  
+2. Select "Node-RED Starter" under "Boilerplate" category on the top  
+3. Fill in your "appname" and "host" and press "Create"  
+- You may use any host name as long as it is unique in the mybluemix.net domain  
+4. Wait until your application is "Staged" and then click "Overview"  
+- Meanwhile you may install the CF command line tool, if not done already  
 
 ## 2. Set up a Node-RED flow to collect data
-	1. Copy the contents of the attached Node-RED flow on your clipboard:  
-	- (https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt)  
-	2. Open your Node-RED application (http://yourhostname.mybluemix.net/red)  
-	3. On an empty flow canvas, select Menu / Import / Clipboard  
-	4. Paste the text from clipboard and click OK  
-	5. Place the flow on canvas and do mouse-click  
-	6. Double-click on the first node, "Twitter in", and add your Twitter credentials  
-	7. Double-click on the last node, "Cloudant out", and make sure it uses your Cloudant service  
-	8. Press "Deploy" button (for either "Full" or "Modified Flows")  
-	9. Check on the "Debug" tab that data is coming in  
+1. Copy the contents of the attached Node-RED flow text file on your clipboard:
+https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt
+
+2. Open your Node-RED application (http://yourhostname.mybluemix.net/red)  
+3. On an empty flow canvas, select Menu / Import / Clipboard  
+4. Paste the text from clipboard and click OK  
+5. Place the flow on canvas and do mouse-click  
+6. Double-click on the first node, "Twitter in", and add your Twitter credentials  
+7. Double-click on the last node, "Cloudant out", and make sure it uses your Cloudant service  
+8. Press "Deploy" button (for either "Full" or "Modified Flows")  
+9. Check on the "Debug" tab that data is coming in  
 
 ## 3. Verify data in Cloudant and set up synchronization to dashDB
 	1. Go to your Node-RED application overview page on Bluemix dashboard  
