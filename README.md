@@ -22,7 +22,7 @@ https://developer.ibm.com/clouddataservices/
 
 ## 2. Set up a Node-RED flow to collect data
 	1. Copy the contents of the attached Node-RED flow on your clipboard:  
-	- https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt  
+	- (https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt)  
 	2. Open your Node-RED application (http://yourhostname.mybluemix.net/red)  
 	3. On an empty flow canvas, select Menu / Import / Clipboard  
 	4. Paste the text from clipboard and click OK  
