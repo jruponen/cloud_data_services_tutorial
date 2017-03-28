@@ -52,7 +52,7 @@ https://developer.ibm.com/clouddataservices/
 	16. Click back on your browser  
 	17. On the right to the "tweets" warehouse name, click "Open in dashDB"  
 
-##4. Examine data in dashDB and analyze with R
+## 4. Examine data in dashDB and analyze with R
 	1. On the dashDB console, click "Tables"  
 	2. Click on the "Table Name" dropdown list and select "ESC16_TWEETS"  
 	3. What you see now is the "Table definition"  
