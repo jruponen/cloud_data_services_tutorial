@@ -1,7 +1,7 @@
 # Introduction tutorial to IBM Cloud Data Services
 These instructions and some files needed in the tutorials are provided at:  https://github.com/jruponen/cloud_data_services_tutorial
   
-###Tutorial in short:  
+### Tutorial in short:  
 1: Setup Node-RED boilerplate  
 2: Collect ESC16 tweets and store into Cloudant  
 3: Examine Cloudant data and sync to dashDB  
@@ -12,7 +12,7 @@ https://developer.ibm.com/clouddataservices/
 
 
 
-##1. Set up Node-RED boilerplate (if not done already)
+## 1. Set up Node-RED boilerplate (if not done already)
 	1. Go to Bluemix catalog  
 	2. Select "Node-RED Starter" under "Boilerplate" category on the top  
 	3. Fill in your "appname" and "host" and press "Create"  
@@ -20,7 +20,7 @@ https://developer.ibm.com/clouddataservices/
 	4. Wait until your application is "Staged" and then click "Overview"  
 	- Meanwhile you may install the CF command line tool, if not done already  
 
-##2. Set up a Node-RED flow to collect data
+## 2. Set up a Node-RED flow to collect data
 	1. Copy the contents of the attached Node-RED flow on your clipboard:  
 	- https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt  
 	2. Open your Node-RED application (http://yourhostname.mybluemix.net/red)  
@@ -32,7 +32,7 @@ https://developer.ibm.com/clouddataservices/
 	8. Press "Deploy" button (for either "Full" or "Modified Flows")  
 	9. Check on the "Debug" tab that data is coming in  
 
-##3. Verify data in Cloudant and set up synchronization to dashDB
+## 3. Verify data in Cloudant and set up synchronization to dashDB
 	1. Go to your Node-RED application overview page on Bluemix dashboard  
 	2. Click on the "Cloudant" service bound to it  
 	3. Click "Launch"  
