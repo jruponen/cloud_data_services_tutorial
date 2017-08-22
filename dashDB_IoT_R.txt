@@ -1,0 +1,21 @@
+# Load the required packages.
+library(ibmdbR)
+
+# Connect to the database that contains the data to be processed.
+con <- idaConnect("BLUDB", "", "")
+idaInit(con)
+
+# Query data
+query <- paste('select "HEARTRATE", "TIMESTAMP", LEFT("TIMESTAMP",16) as MINUTE from "SENSORDATA"') 
+df <- idaQuery(query,as.is=F)
+
+# Calculate average per minute
+dfs <- aggregate(df[,1], list(df$"MINUTE"), mean)
+head(dfs)
+
+# Plot
+plot(dfs[,2], type="o", axes=FALSE, xlab="Time", ylab="Heartrate", main="Avg Heartrate")
+axis(2)
+axis(1, at=seq_along(dfs[,2]),labels=as.character(dfs[,1]), las=2)
+
+idaClose(con)
