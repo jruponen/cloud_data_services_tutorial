@@ -1,79 +1,89 @@
 # Introduction tutorial to IBM Cloud Data Services
 These instructions and some files needed in the tutorials are provided at:  https://github.com/jruponen/cloud_data_services_tutorial
   
-### Tutorial in short:  
-1: Setup Node-RED boilerplate  
-2: Collect ESC16 tweets and store into Cloudant  
-3: Examine Cloudant data and sync to dashDB  
-4: Examine dashDB data and analyze with R
+### This tutorial in short:  
+1: Open Watson IoT device simulator
+2: Setup Node-RED boilerplate and import sample flow 
+3: Observe sensor data, get weather forecast by location and listen audible alerts
+4. Store data into Cloudant NoSQL datastore  
+5: Examine data in Cloudant data and sync to Db2 Warehouse on Cloud (formerly "dashDB")
+6: Examine dashDB data and visualize with R
   
 For more IBM Cloud Data Services tutorials see:  
 https://developer.ibm.com/clouddataservices/
 
+## Step 1: Open IoT device simulator
+1. On a separate browser window, open address: https://quickstart.internetofthings.ibmcloud.com/iotsensor
+2. Notice, that you can simulate temperature, humidity and object temperature
+3. The IoT device ID is shown in the top right corner of the simulator (will need this later on)
 
+## Step 2: Create Weather Company Data service
+1. Go to Bluemix catalog
+2. Search for "weather" and select "Weather Company Data"
+3. Give your service a name (or use default) and press create
 
-## 1. Set up Node-RED boilerplate (if not done already)
-1. Go to Bluemix catalog  
+## Step 3: Set up Node-RED boilerplate (if not done already)
+1. Go back to Bluemix catalog
 2. Select "Node-RED Starter" under "Boilerplate" category on the top  
 3. Fill in your "appname" and "host" and press "Create"  
-- You may use any host name as long as it is unique in the mybluemix.net domain  
-4. Wait until your application is "Staged" and then click "Overview"  
-- Meanwhile you may install the CF command line tool, if not done already  
+- You may use any host name as long as it is unique under the mybluemix.net domain  
+4. Wait until your application is "Staged" and then click "Overview" to go to Node-RED application overview page
+- Meanwhile waiting you may install the CF & Bluemix command line tools, if not done already  
+5. Select "Connections" and press "Connect Existing"
+6. Select "Weather Company Data" and press Connect
 
-## 2. Set up a Node-RED flow to collect data
-1. Copy the contents of the attached Node-RED flow text file on your clipboard:
-https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_ESC16_Tweets.txt
+## Step 4: Set up a Node-RED flow to collect data
+1. Copy the contents of the sample Node-RED flow text file on your clipboard:
+https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/Node-RED_IoT_flow.txt
 
-2. Open your Node-RED application (http://yourhostname.mybluemix.net/red)  
-3. On an empty flow canvas, select Menu / Import / Clipboard  
+2. Go to your Node-RED application (http://yournoderedhostname.mybluemix.net/red)  
+3. While on an empty canvas in Node-RED, select Menu > Import > Clipboard  
 4. Paste the text from clipboard and click OK  
-5. Place the flow on canvas and do mouse-click  
-6. Double-click on the first node, "Twitter in", and add your Twitter credentials  
-7. Double-click on the last node, "Cloudant out", and make sure it uses your Cloudant service  
-8. Press "Deploy" button (for either "Full" or "Modified Flows")  
-9. Check on the "Debug" tab that data is coming in  
+5. Position the flow on canvas and do mouse-click  
+6. Double-click on the "IBM IoT" node and add copy-paste IoT device ID value into "Device Id" field, press done
+7. Double-click on the "sensordata" Cloudant node and make sure the "Service" value points to your Cloudant service  
+8. Press the red "Deploy" button on top right (you may select either "Full" or "Modified Flows")
+9. Check on the "Debug" tab on the right and see the data coming in from the IoT simulator and be processed
+- Note here, that that the "Manipulate Object" function node changes Temperature readings to Heartrate readings!
+- Also note, that it adds timestamp and GPS coordinates to the data
+- All the incoming sensor data should also be now stored into the Cloudant data store
+- Weather Insights is used to get some live weather forecast for current location
+- If your browser supports "Play Audio" node, you'll need audible messages indicating heart rate and forecast
 
-## 3. Verify data in Cloudant and set up synchronization to dashDB
-1. Go to your Node-RED application overview page on Bluemix dashboard  
-2. Click on the "Cloudant" service bound to it  
-3. Click "Launch"  
-4. In the "Databases" view you should now see "esc16_tweets" database with some docs in it  
-5. Click on the "esc16_tweets"  
-6. On one of the documents, click on the "Pencil" icon in it's top right corner  
-7. Examine the JSON record, this is the tweet data  
-8. Click "Warehousing" on the left  
-9. Click "Create a dashDB Warehouse"  
-10. Enter your Bluemix credentials (your IBM ID and the password)  
-11. Enter warehouse name, e.g: tweets  
-12. Enter source database name: esc16_tweets  
-13. Leave the "Create new dashDB instance" selected  
-14. Press "Create Warehouse" and wait for a warehouse to be created  
-15. Click your warehouse "tweets"  
-    - this is what is currently being synced from Cloudant to dashDB  
-16. Click back on your browser  
-17. On the right to the "tweets" warehouse name, click "Open in dashDB"  
+## Step 5: Verify data in Cloudant and set up synchronization to Db2 Warehouse (dashDB)
+1. Go to your Bluemix dashboard
+2. Click the "Cloudant" service open it's info page
+3. Click the green "Launch" button to open Cloudant console
+4. In the "Databases" view you should now see "sensordata" database with some docs in it  
+5. Click on the "sensordata" database  
+6. Click one of the documents and examine the data (this is a one sensor reading in JSON format)
 
-## 4. Examine data in dashDB and analyze with R
-1. On the dashDB console, click "Tables"  
-2. Click on the "Table Name" dropdown list and select "ESC16_TWEETS"  
-3. What you see now is the "Table definition"  
-4. To see data, click "Browse Data"  
-5. Select "Run SQL" on the left  
-6. To verify number of rows, clean up the SQL screen and enter (or copy) the following statement:  
-   SELECT COUNT(*) FROM ESC16_TWEETS;  
-7. Press "Run"
-8. See the SQL select result on below  
-9. To analyze the data, click on "Analytics" > "R Scripts"  
-10. Click on the "RStudio" button  
-11. You'll need to copy/paste dashDB username and password. These can be found from the previous browser tab (where dashDB is open). Go there and select "Connect" > "Connection Information". Copy/paste "User ID" and "Password" values to the RStudio tab.  
-12. Click "File" > "New Project"  
-13. Click "New Directory" > "Empty Project"  
-14. Enter directory name, e.g: ESC16  
-15. Press "Create Project"  
-16. Wait until RStudio refreshes and select "File" > "New File" > "R Script"  
-17. Copy/paste the attached R Script contents on the empty canvas in RStudio:  
-https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/dashDB_ESC16_R.txt  
-18. Press "Run" button to step through each line  
-19. After run "barplot" line, check the "Plots" tab on the right  
-20. Continue to "Run" rest of the lines in order to close the connection  
-21. Select "File" > "Quit RStudio"  
+7. On another browser tab, go to Bluemix Catalog
+8. Setup a "Db2 Warehouse on Cloud" service (formerly named “dashDB”)
+9. When the "Db2 Warehouse on Cloud" info page opens, select “Service credentials” tab and press New Credentials
+10. Select “Connections” tab, press Create Connection and select your Node-RED instance
+
+11. Go back to browser tab having Cloudant console open
+12. Click the "Warehousing" tab on the left (puzzle-piece icon)
+13. Click "Create Warehouse" button
+14. Enter your Bluemix credentials (your IBM ID and the password)  
+15. Enter warehouse name, e.g: MYWH   
+16. In the Data Sources field, press s and select “sensordata” database
+17. On the bottom section, click “dashDB service instance” and select your “Db2 Warehouse on Cloud” instance
+18. Press Create Warehouse
+19. In the warning screen press Continue
+
+## Step 6: Examine data in relational db and analyze with R
+1. Still in the Cloudant dashboard, Warehouses screen, press “Open in dashDB”
+2. In Db2 Warehouse (dashDB), in the left hand navigation, select Tables and then select “sensordata” table
+3. Press Browse Data and review that the data exists (should be synced near real-time)
+4. In the left hand navigation select Analytics > R Scripts
+5. Press RStudio button
+6. Enter dashDB username and password to RStudio login
+- you can find these credentials from Node-RED “Runtime” section, under “Environment variables”, in dashDB section
+7. Copy the sample R script on canvas
+https://raw.githubusercontent.com/jruponen/cloud_data_services_tutorial/master/dashDB_IoT_R.txt
+
+8. Run the script, line by line, and see the sample plot (see "plots" tab in R studio)
+9. Remember to run the last line as well, which will close connection to the database
+10. Select "File" > "Quit RStudio" (before closing, you may want to save your script)
