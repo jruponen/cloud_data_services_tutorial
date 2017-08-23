@@ -2,12 +2,13 @@
 These instructions and some files needed in the tutorials are provided at:  https://github.com/jruponen/cloud_data_services_tutorial
   
 ### This tutorial in short:  
-1: Open Watson IoT device simulator
-2: Setup Node-RED boilerplate and import sample flow 
-3: Observe sensor data, get weather forecast by location and listen audible alerts
-4. Store data into Cloudant NoSQL datastore  
-5: Examine data in Cloudant data and sync to Db2 Warehouse on Cloud (formerly "dashDB")
-6: Examine dashDB data and visualize with R
+1. Open Watson IoT device simulator
+2. Create Weather Company Data service
+3. Setup Node-RED boilerplate
+4. Import sample Node-RED flow and configure and deploy it
+- when deployed observe sensor data, get weather forecasts by location and listen audible alerts
+5. Verify stored sensor data in Cloudant NoSQL datastore and setup near real-time sync to relational data store
+6. Examine data in relational data store and visualize with R
   
 For more IBM Cloud Data Services tutorials see:  
 https://developer.ibm.com/clouddataservices/
